@@ -2,7 +2,7 @@ import pytest
 from selenium import webdriver
 from pages.login_page import LoginPage
 
-
+# decorators that provide predictable pre-conditions
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()

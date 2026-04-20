@@ -2,8 +2,10 @@ from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.inventory_page import InventoryPage
 
+# declare base url - test environment
 BASE_URL = "https://www.saucedemo.com/"
 
+# locators used in testing
 class Locators:
     # Login page - elements locators
     USERNAME_INPUT = (By.ID, "user-name")
@@ -11,7 +13,7 @@ class Locators:
     LOGIN_BUTTON = (By.ID, "login-button")
     ERROR_MESSAGE = (By.CSS_SELECTOR, ".error-message-container.error")
 
-
+# LoginPage class and the functions used in the tests
 class LoginPage(BasePage):
     def __init__(self, driver):
         self.driver = driver
