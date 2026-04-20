@@ -12,6 +12,7 @@ class Locators:
     ONESIE_ADD_TO_CART_BUTTON = (By.ID, 'add-to-cart-sauce-labs-onesie')
     ONESIE_REMOVE_BUTTON = (By.ID, 'remove-sauce-labs-onesie')
     CART_COUNTER = (By.CSS_SELECTOR, '.shopping_cart_badge')
+    BACKPACK_ADD_TO_CART_BUTTON = (By.ID, 'add-to-cart-sauce-labs-backpack')
 
 # InventoryPage class and the functions used in the tests
 class InventoryPage(BasePage):
@@ -37,7 +38,7 @@ class InventoryPage(BasePage):
         return len(self.driver.find_elements(*Locators.ADD_TO_CART_BUTTONS))
 
     def click_add_to_cart_button_onesie(self):
-        return self.driver.find_element(*Locators.ONESIE_ADD_TO_CART_BUTTON).click()
+        self.driver.find_element(*Locators.ONESIE_ADD_TO_CART_BUTTON).click()
 
     def get_onesie_remove_button_name(self):
         return self.driver.find_element(*Locators.ONESIE_REMOVE_BUTTON).text
@@ -46,10 +47,13 @@ class InventoryPage(BasePage):
         return self.driver.find_element(*Locators.CART_COUNTER).text
 
     def click_remove_button_onesie(self):
-        return self.driver.find_element(*Locators.ONESIE_REMOVE_BUTTON).click()
+        self.driver.find_element(*Locators.ONESIE_REMOVE_BUTTON).click()
 
     def nonvisible_cart_counter(self):
         return len(self.driver.find_elements(*Locators.CART_COUNTER)) > 0
 
     def get_onesie_add_button_name(self):
         return self.driver.find_element(*Locators.ONESIE_ADD_TO_CART_BUTTON).text
+
+    def click_add_to_cart_button_backpack(self):
+        self.driver.find_element(*Locators.BACKPACK_ADD_TO_CART_BUTTON).click()
