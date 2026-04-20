@@ -3,6 +3,7 @@ from utils.test_data import *
 from time import sleep
 from pages.inventory_page import InventoryPage
 
+
 # Scenario: automated test for valid user login
 def test_valid_login(driver):
     login_page = LoginPage(driver)

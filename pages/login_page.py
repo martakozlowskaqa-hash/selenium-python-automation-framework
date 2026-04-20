@@ -7,7 +7,7 @@ BASE_URL = "https://www.saucedemo.com/"
 
 # locators used in testing
 class Locators:
-    # Login page - elements locators
+
     USERNAME_INPUT = (By.ID, "user-name")
     PASSWORD_INPUT = (By.ID, "password")
     LOGIN_BUTTON = (By.ID, "login-button")
