@@ -32,7 +32,7 @@ def test_add_to_cart_buttons(driver, logged_in):
     inventory_page.click_add_to_cart_button_onesie()
     sleep(3)
     assert inventory_page.get_onesie_remove_button_name() == 'Remove'
-    assert inventory_page.get_cart_counter() == "1"
+    assert inventory_page.get_cart_counter() == '1'
     inventory_page.click_remove_button_onesie()
     sleep(3)
     assert inventory_page.get_onesie_add_button_name() == 'Add to cart'

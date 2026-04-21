@@ -11,7 +11,6 @@ class Locators:
     ADD_TO_CART_BUTTONS = (By.XPATH, "//button[text()='Add to cart']")
     ONESIE_ADD_TO_CART_BUTTON = (By.ID, 'add-to-cart-sauce-labs-onesie')
     ONESIE_REMOVE_BUTTON = (By.ID, 'remove-sauce-labs-onesie')
-    CART_COUNTER = (By.CSS_SELECTOR, '.shopping_cart_badge')
     BACKPACK_ADD_TO_CART_BUTTON = (By.ID, 'add-to-cart-sauce-labs-backpack')
 
 # InventoryPage class and the functions used in the tests
@@ -43,14 +42,8 @@ class InventoryPage(BasePage):
     def get_onesie_remove_button_name(self):
         return self.driver.find_element(*Locators.ONESIE_REMOVE_BUTTON).text
 
-    def get_cart_counter(self):
-        return self.driver.find_element(*Locators.CART_COUNTER).text
-
     def click_remove_button_onesie(self):
         self.driver.find_element(*Locators.ONESIE_REMOVE_BUTTON).click()
-
-    def nonvisible_cart_counter(self):
-        return len(self.driver.find_elements(*Locators.CART_COUNTER)) > 0
 
     def get_onesie_add_button_name(self):
         return self.driver.find_element(*Locators.ONESIE_ADD_TO_CART_BUTTON).text
