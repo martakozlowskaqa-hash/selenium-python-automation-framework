@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 class Locators:
     CART_COUNTER = (By.CSS_SELECTOR, '.shopping_cart_badge')
+    PAGE_HEADER = (By.CSS_SELECTOR, '.title')
 
 # BasePage class for each page
 class BasePage:
@@ -13,3 +14,6 @@ class BasePage:
 
     def nonvisible_cart_counter(self):
         return len(self.driver.find_elements(*Locators.CART_COUNTER)) > 0
+
+    def get_page_header_name(self):
+        return self.driver.find_element(*Locators.PAGE_HEADER).text

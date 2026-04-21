@@ -19,7 +19,7 @@ def logged_in(driver):
     return driver
 
 @pytest.fixture
-def add_one_item_to_card(logged_in):
+def add_one_item_to_card(driver, logged_in):
     inventory_page = InventoryPage(driver)
     inventory_page.click_add_to_cart_button_backpack()
     return driver
