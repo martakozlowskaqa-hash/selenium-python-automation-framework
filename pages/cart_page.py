@@ -10,6 +10,7 @@ class Locators:
     CART_PRODUCT_NAMES = (By.CLASS_NAME, 'inventory_item_name')
     CART_PRODUCT_PRICE = (By.CLASS_NAME, 'inventory_item_price')
     CONTINUE_SHOPPING_BUTTON = (By.ID, 'continue-shopping')
+    REMOVE_BACKPACK_BUTTON = (By.ID, 'remove-sauce-labs-backpack')
 
 class CartPage(BasePage):
     def is_loaded(self):
@@ -39,3 +40,8 @@ class CartPage(BasePage):
         from pages.inventory_page import InventoryPage
         self.driver.find_element(*Locators.CONTINUE_SHOPPING_BUTTON).click()
         return InventoryPage(self.driver)
+
+    def click_remove_backpack_button(self):
+        self.driver.find_element(*Locators.REMOVE_BACKPACK_BUTTON).click()
+
+

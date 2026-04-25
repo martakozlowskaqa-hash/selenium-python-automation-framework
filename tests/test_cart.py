@@ -27,5 +27,7 @@ def test_cart_add_and_remove_items_flow(driver, logged_in, add_one_item_to_card)
     assert cart_page.visible_product_in_cart('Sauce Labs Backpack')
     assert cart_page.visible_prices_in_cart('$29.99')
     # verification of product removal from the shopping cart
-    pass
+    assert cart_page.click_remove_backpack_button()
+    sleep(2)
+    assert not cart_page.nonvisible_cart_counter()
 
