@@ -7,6 +7,9 @@ class Locators:
     LAST_NAME = (By.ID, 'last-name')
     ZIP_CODE = (By.ID, 'postal-code')
     CONTINUE_BUTTON = (By.ID, 'continue')
+    TOTAL_PRICE = (By.CSS_SELECTOR, "[data-test='total-label']")
+    FINISH_BUTTON = (By.ID, 'finish')
+    COMPLETE_MESSAGE = (By.CLASS_NAME, 'complete-header')
 
 class CheckoutPage(BasePage):
     def is_loaded(self):
@@ -24,3 +27,12 @@ class CheckoutPage(BasePage):
     def click_continue(self):
         self.driver.find_element(*Locators.CONTINUE_BUTTON).click()
 
+    def get_total_price(self):
+        text = self.driver.find_element(*Locators.TOTAL_PRICE).text
+        return text.replace("Total: ", "")
+
+    def click_finish_button(self):
+        self.driver.find_element(*Locators.FINISH_BUTTON).click()
+
+    def get_finish_message(self):
+        return self.driver.find_element(*Locators.COMPLETE_MESSAGE).text
