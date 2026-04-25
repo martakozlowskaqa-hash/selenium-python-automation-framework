@@ -34,7 +34,7 @@ def add_multiple_items_to_cart(driver, logged_in):
     return driver
 
 @pytest.fixture
-def checkout_page(logged_in):
+def proceed_to_checkout_page(logged_in):
     driver = logged_in
     inventory_page = InventoryPage(driver)
     inventory_page.click_add_to_cart_button_backpack()
