@@ -4,7 +4,7 @@ from conftest import *
 from time import sleep
 
 # Scenario: verifying correct addition and removal of a single item - cart page
-def test_cart_add_and_remove_items_flow(driver, logged_in, add_one_item_to_card):
+def test_cart_add_and_remove_item_flow(driver, logged_in, add_one_item_to_card):
     driver = add_one_item_to_card
     inventory_page = InventoryPage(driver)
     cart_page = inventory_page.go_to_cart_page()
@@ -27,7 +27,21 @@ def test_cart_add_and_remove_items_flow(driver, logged_in, add_one_item_to_card)
     assert cart_page.visible_product_in_cart('Sauce Labs Backpack')
     assert cart_page.visible_prices_in_cart('$29.99')
     # verification of product removal from the shopping cart
-    assert cart_page.click_remove_backpack_button()
+    cart_page.click_remove_backpack_button()
     sleep(2)
     assert not cart_page.nonvisible_cart_counter()
 
+# Scenario: verifying the correctness of adding multiple products
+def test_cart_add_and_remove_multiple_items(driver, logged_in, add_multiple_items_to_cart):
+    driver = add_multiple_items_to_cart
+    inventory_page = InventoryPage(driver)
+    cart_page = inventory_page.go_to_cart_page()
+    sleep(2)
+    assert cart_page.get_page_header_name() == 'Your Cart'
+    assert cart_page.get_cart_counter() == '2'
+    assert cart_page.get_cart_product_count() == 2
+    assert cart_page.visible_product_in_cart('Sauce Labs Backpack')
+    assert cart_page.visible_product_in_cart('Sauce Labs Onesie')
+    assert cart_page.visible_prices_in_cart('$29.99')
+    assert cart_page.visible_prices_in_cart('$7.99')
+    sleep(1)

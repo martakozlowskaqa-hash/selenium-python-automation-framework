@@ -23,3 +23,10 @@ def add_one_item_to_card(driver, logged_in):
     inventory_page = InventoryPage(driver)
     inventory_page.click_add_to_cart_button_backpack()
     return driver
+
+@pytest.fixture
+def add_multiple_items_to_cart(driver, logged_in):
+    inventory_page = InventoryPage(driver)
+    inventory_page.click_add_to_cart_button_backpack()
+    inventory_page.click_add_to_cart_button_onesie()
+    return driver
