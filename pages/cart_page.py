@@ -11,6 +11,7 @@ class Locators:
     CART_PRODUCT_PRICE = (By.CLASS_NAME, 'inventory_item_price')
     CONTINUE_SHOPPING_BUTTON = (By.ID, 'continue-shopping')
     REMOVE_BACKPACK_BUTTON = (By.ID, 'remove-sauce-labs-backpack')
+    CHECKOUT_BUTTON = (By.ID, 'checkout')
 
 class CartPage(BasePage):
     def is_loaded(self):
@@ -44,4 +45,5 @@ class CartPage(BasePage):
     def click_remove_backpack_button(self):
         self.driver.find_element(*Locators.REMOVE_BACKPACK_BUTTON).click()
 
-
+    def click_checkout_button(self):
+        self.driver.find_element(*Locators.CHECKOUT_BUTTON).click()
