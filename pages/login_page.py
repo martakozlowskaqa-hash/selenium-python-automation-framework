@@ -16,6 +16,7 @@ class Locators:
 # LoginPage class and the functions used in the tests
 class LoginPage(BasePage):
     def __init__(self, driver):
+        super().__init__(driver)
         self.driver = driver
 
     def open(self):

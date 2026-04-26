@@ -1,8 +1,12 @@
-VALID_USERNAME = "standard_user"
-VALID_PASSWORD = "secret_sauce"
+from faker import Faker
 
-INVALID_USERNAME = "testerpodyplomowy"
-INVALID_PASSWORD = "randompassword"
+fake = Faker()
 
-LOCKEDOUT_USERNAME= "locked_out_user"
-LOCKEDOUT_PASSWORD = "secret_sauce"
+VALID_USERNAME = 'standard_user'
+VALID_PASSWORD = 'secret_sauce'
+
+INVALID_USERNAME = fake.user_name()
+INVALID_PASSWORD = fake.password()
+
+LOCKEDOUT_USERNAME= 'locked_out_user'
+LOCKEDOUT_PASSWORD = 'secret_sauce'

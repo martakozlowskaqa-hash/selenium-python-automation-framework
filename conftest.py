@@ -1,14 +1,23 @@
 import pytest
 from selenium import webdriver
-
 from pages.cart_page import CartPage
 from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
+from utils.driver_setup import DriverSetup
+
+def pytest_addoption(parser):
+    parser.addoption(
+        '--browser',
+        action = 'store',
+        default = 'chrome'
+    )
 
 # decorators that provide predictable pre-conditions
+
 @pytest.fixture
-def driver():
-    driver = webdriver.Chrome()
+def driver(request):
+    browser_name = request.config.getoption('browser')
+    driver = DriverSetup.get_driver(browser_name)
     driver.maximize_window()
     yield driver
     driver.quit()
