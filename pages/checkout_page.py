@@ -10,6 +10,7 @@ class Locators:
     TOTAL_PRICE = (By.CSS_SELECTOR, "[data-test='total-label']")
     FINISH_BUTTON = (By.ID, 'finish')
     COMPLETE_MESSAGE = (By.CLASS_NAME, 'complete-header')
+    CHECKOUT_ERROR_MESSAGE = (By.CSS_SELECTOR, '.error-message-container.error')
 
 class CheckoutPage(BasePage):
     def is_loaded(self):
@@ -36,3 +37,6 @@ class CheckoutPage(BasePage):
 
     def get_finish_message(self):
         return self.driver.find_element(*Locators.COMPLETE_MESSAGE).text
+
+    def get_error_checkout_form_message(self):
+        return self.driver.find_element(*Locators.CHECKOUT_ERROR_MESSAGE).text
