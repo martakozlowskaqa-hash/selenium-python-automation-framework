@@ -23,10 +23,10 @@ class LoginPage(BasePage):
         self.driver.get(BASE_URL)
 
     def login(self, username, password):
-        self.driver.find_element(*Locators.USERNAME_INPUT).send_keys(username)
-        self.driver.find_element(*Locators.PASSWORD_INPUT).send_keys(password)
-        self.driver.find_element(*Locators.LOGIN_BUTTON).click()
+        self.wait_for_visible(Locators.USERNAME_INPUT).send_keys(username)
+        self.wait_for_visible(Locators.PASSWORD_INPUT).send_keys(password)
+        self.wait_for_clickable(Locators.LOGIN_BUTTON).click()
         return InventoryPage(self.driver)
 
     def get_error_message(self):
-        return self.driver.find_element(*Locators.ERROR_MESSAGE).text
+        return self.wait_for_visible(Locators.ERROR_MESSAGE).text

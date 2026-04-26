@@ -5,6 +5,8 @@ from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 from utils.driver_setup import DriverSetup
 
+# register custom pytest CLI argument to allow dynamic browser selection
+# example: pytest --browser firefox (chrome is default)
 def pytest_addoption(parser):
     parser.addoption(
         '--browser',
@@ -13,7 +15,6 @@ def pytest_addoption(parser):
     )
 
 # decorators that provide predictable pre-conditions
-
 @pytest.fixture
 def driver(request):
     browser_name = request.config.getoption('browser')

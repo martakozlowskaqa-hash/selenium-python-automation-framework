@@ -1,6 +1,6 @@
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
-from pages.cart_page import CartPage
+# from pages.cart_page import CartPage
 
 
 # locators used in testing
@@ -25,35 +25,36 @@ class InventoryPage(BasePage):
         return len(self.driver.find_elements(*Locators.INVENTORY_PRODUCTS))
 
     def get_first_product_name(self):
-        return self.driver.find_element(*Locators.NAME_FIRST_PRODUCT).text
+        return self.wait_for_visible(Locators.NAME_FIRST_PRODUCT).text
 
     def get_first_product_price(self):
-        return self.driver.find_element(*Locators.PRICE_FIRST_PRODUCT).text
+        return self.wait_for_visible(Locators.PRICE_FIRST_PRODUCT).text
 
     def get_fourth_product_name(self):
-        return self.driver.find_element(*Locators.NAME_FOURTH_PRODUCT).text
+        return self.wait_for_visible(Locators.NAME_FOURTH_PRODUCT).text
 
     def get_fourth_product_price(self):
-        return self.driver.find_element(*Locators.PRICE_FOURTH_PRODUCT).text
+        return self.wait_for_visible(Locators.PRICE_FOURTH_PRODUCT).text
 
     def get_buttons_add_to_cart_count(self):
         return len(self.driver.find_elements(*Locators.ADD_TO_CART_BUTTONS))
 
     def click_add_to_cart_button_onesie(self):
-        self.driver.find_element(*Locators.ONESIE_ADD_TO_CART_BUTTON).click()
+        self.wait_for_clickable(Locators.ONESIE_ADD_TO_CART_BUTTON).click()
 
     def get_onesie_remove_button_name(self):
-        return self.driver.find_element(*Locators.ONESIE_REMOVE_BUTTON).text
+        return self.wait_for_visible(Locators.ONESIE_REMOVE_BUTTON).text
 
     def click_remove_button_onesie(self):
-        self.driver.find_element(*Locators.ONESIE_REMOVE_BUTTON).click()
+        self.wait_for_clickable(Locators.ONESIE_REMOVE_BUTTON).click()
 
     def get_onesie_add_button_name(self):
-        return self.driver.find_element(*Locators.ONESIE_ADD_TO_CART_BUTTON).text
+        return self.wait_for_visible(Locators.ONESIE_ADD_TO_CART_BUTTON).text
 
     def click_add_to_cart_button_backpack(self):
-        self.driver.find_element(*Locators.BACKPACK_ADD_TO_CART_BUTTON).click()
+        self.wait_for_clickable(Locators.BACKPACK_ADD_TO_CART_BUTTON).click()
 
     def go_to_cart_page(self):
+        from pages.cart_page import CartPage
         self.driver.find_element(*Locators.CART_ICON_BUTTON).click()
         return CartPage(self.driver)

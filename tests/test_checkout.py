@@ -1,5 +1,4 @@
 from conftest import *
-from time import sleep
 from pages.checkout_page import CheckoutPage
 from faker import Faker
 
@@ -15,10 +14,8 @@ def test_correct_data_flow(driver, proceed_to_checkout_page):
     checkout_page.fill_first_name(faker.first_name())
     checkout_page.fill_last_name(faker.last_name())
     checkout_page.fill_zip_code(faker.postcode())
-    sleep(3)
     checkout_page.click_continue()
     assert checkout_page.get_page_header_name() == 'Checkout: Overview'
-    sleep(4)
     # order confirmation
     assert checkout_page.get_total_price() == "$32.39"
     checkout_page.click_finish_button()
@@ -35,7 +32,6 @@ def test_missing_first_name_flow(driver, proceed_to_checkout_page):
     # fill in form with correct data
     checkout_page.fill_last_name(faker.last_name())
     checkout_page.fill_zip_code(faker.postcode())
-    sleep(3)
     checkout_page.click_continue()
     # verification of the error message - First Name is required
     assert checkout_page.get_error_checkout_form_message() == 'Error: First Name is required'
@@ -49,7 +45,6 @@ def test_missing_last_name_flow(driver, proceed_to_checkout_page):
     # fill in form with correct data
     checkout_page.fill_first_name(faker.first_name())
     checkout_page.fill_zip_code(faker.postcode())
-    sleep(3)
     checkout_page.click_continue()
     # verification of the error message - Last Name is required
     assert checkout_page.get_error_checkout_form_message() == 'Error: Last Name is required'
@@ -63,7 +58,6 @@ def test_missing_zip_code_flow(driver, proceed_to_checkout_page):
     # fill in form with correct data
     checkout_page.fill_first_name(faker.first_name())
     checkout_page.fill_last_name(faker.last_name())
-    sleep(3)
     checkout_page.click_continue()
     # verification of the error message - Postal Code is required
     assert checkout_page.get_error_checkout_form_message() == 'Error: Postal Code is required'

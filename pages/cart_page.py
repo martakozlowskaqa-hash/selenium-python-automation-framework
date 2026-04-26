@@ -1,9 +1,8 @@
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
-
 # from pages.inventory_page import InventoryPage
 
-
+# locators used in testing
 class Locators:
     CART_ICON_BUTTON = (By.CSS_SELECTOR, '.shopping_cart_link')
     CART_PRODUCT_COUNT = (By.CLASS_NAME, 'cart_item')
@@ -13,12 +12,13 @@ class Locators:
     REMOVE_BACKPACK_BUTTON = (By.ID, 'remove-sauce-labs-backpack')
     CHECKOUT_BUTTON = (By.ID, 'checkout')
 
+# CartPage class and the functions used in the tests
 class CartPage(BasePage):
     def is_loaded(self):
         return 'cart.html' in self.driver.current_url
 
     def open_cart(self):
-        self.driver.find_element(*Locators.CART_ICON_BUTTON).click()
+        self.wait_for_clickable(Locators.CART_ICON_BUTTON).click()
 
     def get_cart_product_count(self):
         return len(self.driver.find_elements(*Locators.CART_PRODUCT_COUNT))
@@ -39,11 +39,11 @@ class CartPage(BasePage):
 
     def click_continue_shopping_button(self):
         from pages.inventory_page import InventoryPage
-        self.driver.find_element(*Locators.CONTINUE_SHOPPING_BUTTON).click()
+        self.wait_for_clickable(Locators.CONTINUE_SHOPPING_BUTTON).click()
         return InventoryPage(self.driver)
 
     def click_remove_backpack_button(self):
-        self.driver.find_element(*Locators.REMOVE_BACKPACK_BUTTON).click()
+        self.wait_for_clickable(Locators.REMOVE_BACKPACK_BUTTON).click()
 
     def click_checkout_button(self):
-        self.driver.find_element(*Locators.CHECKOUT_BUTTON).click()
+        self.wait_for_clickable(Locators.CHECKOUT_BUTTON).click()
