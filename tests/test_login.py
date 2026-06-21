@@ -16,7 +16,7 @@ def test_invalid_login(driver):
     login_page.open()
     login_page.login(INVALID_USERNAME, INVALID_PASSWORD)
     error_text = login_page.get_error_message()
-    assert "Epic sadface: Username and password do not match any user in this service" in error_text
+    assert LOGIN_INVALID_ERROR in error_text
     assert "inventory.html" not in driver.current_url
 
 # Scenario: automated test for lockedout data user login
@@ -25,5 +25,5 @@ def test_lockedout_login(driver):
     login_page.open()
     login_page.login(LOCKEDOUT_USERNAME, LOCKEDOUT_PASSWORD)
     error_text = login_page.get_error_message()
-    assert "Epic sadface: Sorry, this user has been locked out." in error_text
+    assert LOGIN_LOCKED_ERROR in error_text
     assert "inventory.html" not in driver.current_url
