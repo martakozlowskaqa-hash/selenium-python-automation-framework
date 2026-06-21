@@ -11,13 +11,13 @@ def test_visibility_of_product(driver, logged_in):
     assert inventory_page.get_products_count() == 6
     # verify product names and prices - 1 and 4 products as representative samples
     first_product_name = inventory_page.get_first_product_name()
-    assert BACKPACK_NAME in first_product_name
+    assert first_product_name == BACKPACK_NAME
     first_product_price = inventory_page.get_first_product_price()
-    assert BACKPACK_PRICE in first_product_price
+    assert first_product_price == BACKPACK_PRICE
     fourth_product_name = inventory_page.get_fourth_product_name()
-    assert JACKET_NAME in fourth_product_name
+    assert fourth_product_name == JACKET_NAME
     fourth_product_price = inventory_page.get_fourth_product_price()
-    assert JACKET_PRICE in fourth_product_price
+    assert fourth_product_price == JACKET_PRICE
 
 # Scenario: verification of the number of 'Add to cart' buttons and their behavior after interaction
 def test_add_to_cart_buttons(driver, logged_in):
